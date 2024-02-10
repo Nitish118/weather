@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" href="clouds2.png" type="image/png">
+    
+    <style>
+        body {
+            background-image: url('mountains2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .translucent-card {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+            border: none;
+            opacity: 2;
+            color: white;
+        }
+
+        .translucent-table {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Overlay semi-transparent black color on the table */
+            color: white; /* Set text color to contrast with the background */
+            border: none;
+            /* border-color: transparent; */
+            border-radius: 20px;
+        }
+
+        .translucent-table th,
+        .translucent-table td {
+            border: 1px solid  rgba(8, 7, 7, 0.3); /* Set borders with semi-transparent white color */
+            /* border-color: transparent; */
+            color: white;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .translucent-table th {
+            background-color: rgba(0, 0, 0, 0.3); /* Set background color for table header with semi-transparent black color */
+            font-weight: normal;
+            font-family: Arial, Helvetica, sans-serif;
+            /* border-color: transparent; */
+        }
+
+
+    </style>
+
+  </head>
+  <body>
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Weather App</a>
+          <span class="navbar-text fs-3 mx-auto">
+            <i class="fa-solid fa-cloud"></i>
+          </span>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <form class="d-flex">
+              <input id="city" class="form-control me-2" type="search" placeholder="Search City" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit" id="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+
+
+
+    
+
+    <div class="container pt-5">
+
+        <h1 class="my-4 text-center pb-5">Weather for <span id="cityName"></span></h1>
+
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+              <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm translucent-card">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Humidity</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title"><span id="humidity2"></span> %</h1>
+                    <ul class="list-unstyled mt-3 mb-4 fs-4">
+                      <li>Cloud Percentage is <span id="cloud_pct"></span></li>
+                      <li>Feels Like <span id="feels_like"></span></li>
+                      <li>Humidity is <span id="humidity"></span></li>
+                    </ul>
+                    <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm translucent-card">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Temperatures</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title"><span id="temp2">
+                    </span> &deg;C</h1>
+                    <ul class="list-unstyled mt-3 mb-4 fs-4">
+                      <li>Temperature is <span id="temp"></span></li>
+                      <li>Min Temperature is <span id="min_temp"></span></li>
+                      <li>Max Temperature is <span id="max_temp"></span></li>
+                    </ul>
+                    <!-- <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm translucent-card">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Sun And Wind</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title"><span id="wind_speed2"></span> km/hr</h1>
+                    <ul class="list-unstyled mt-3 mb-4 fs-4">
+                      <li>Wind Speed is <span id="wind_speed"></span></li>
+                      <li>Sunrise time is <span id="sunrise"></span></li>
+                      <li>Sunset time is <span id="sunset"></span></li>
+                    </ul>
+                    <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Other Cities</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            
+          </main>
+
+
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
