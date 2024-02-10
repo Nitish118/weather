@@ -19,8 +19,36 @@
             color: white;
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
         }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                position: relative;
+                background-image: 
+                    url('storm.jpg'), /* Original background image */
+                    url('storm.jpg'); /* Repeated background image */
+                background-repeat: no-repeat, repeat; /* No-repeat for the original image, repeat for the repeated image */
+                background-size: cover, auto; /* Cover for the original image, auto for the repeated image */
+                background-position: center, top left; /* Center for the original image, top left for the repeated image */
+            }
+
+              body::after {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-image: url('storm.jpg');
+                  background-repeat: repeat;
+                  background-size: auto;
+                  background-position: top left;
+                  transform-origin: top left; /* Set the origin of rotation to top left corner */
+                  transform: rotate(180deg); /* Rotate the repeated background image by 180 degrees */
+              }
+          }
+
 
         .translucent-card {
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
@@ -60,22 +88,23 @@
     
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+      <div class="container">
           <a class="navbar-brand" href="#">Weather App</a>
-          <span class="navbar-text fs-3 mx-auto">
-            <i class="fa-solid fa-cloud"></i>
+          <span class="navbar-text fs-3 d-none d-lg-inline-block">
+              <i class="fa-solid fa-cloud"></i>
           </span>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <form class="d-flex">
-              <input id="city" class="form-control me-2" type="search" placeholder="Search City" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit" id="submit">Search</button>
-            </form>
+              <form class="d-flex">
+                  <input id="city" class="form-control me-2" type="search" placeholder="Search City" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit" id="submit">Search</button>
+              </form>
           </div>
-        </div>
-    </nav>
+      </div>
+  </nav>
+  
 
 
 
